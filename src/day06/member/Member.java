@@ -11,7 +11,7 @@ public class Member {
     String email;
     String memberName;
     String password;
-    String gender;
+    String gender;  // 성별
     int age;
     LocalDate regDate; // 회원가입일자
 
