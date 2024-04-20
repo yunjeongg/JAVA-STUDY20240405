@@ -1,6 +1,6 @@
 package day01;
 
-public class Variable {
+public class $02_Variable {
 
     static int n4 = 40;
 
