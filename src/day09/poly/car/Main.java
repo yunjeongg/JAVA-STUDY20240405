@@ -1,5 +1,8 @@
 package day09.poly.car;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -64,5 +67,9 @@ public class Main {
         System.out.println("=================");
 
         driver.drive(new Sonata());
+
+
+        Sonata sonata = new Sonata();
+        sonata.accelerate();
     }
 }
