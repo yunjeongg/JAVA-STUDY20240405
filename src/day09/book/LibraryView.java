@@ -74,7 +74,6 @@ public class LibraryView {
             }
         }
     }
-
     private void displayUserInfo() {
         BookUser user = repository.getBookUser();
         System.out.println("\n******** 회원님 정보 ********");
