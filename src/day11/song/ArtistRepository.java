@@ -1,5 +1,8 @@
 package day11.song;
 
+import day12.io.FileExample;
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -10,6 +13,9 @@ public class ArtistRepository {
     // 가수들을 담을 자료구조 선언
     // key: 가수 이름, value: 가수 객체(가수명, 노래리스트)
     private Map<String, Artist> artistMap = new HashMap<>();
+
+    // 세이브파일 위치 경로
+    public static final String SAVE_PATH = FileExample.ROOT_PATH + "/hello/song.sav";
 
     public int count() {
         return artistMap.size();
@@ -53,4 +59,31 @@ public class ArtistRepository {
         return foundArtist.getSongList();
     }
 
+    public void save() {
+
+        try (FileOutputStream fos = new FileOutputStream(SAVE_PATH)) {
+
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(artistMap);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void load() {
+
+        File file = new File(SAVE_PATH);
+        if (file.exists()) {
+            try (FileInputStream fis = new FileInputStream(SAVE_PATH)) {
+
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                this.artistMap = (Map<String, Artist>) ois.readObject();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
